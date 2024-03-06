@@ -6,14 +6,17 @@ import pic from "../assets/test.jpg";
 import { otherData, teamData, treeData } from "../assets/sideBarData";
 
 const SideBar = () => {
+  // State to manage the selected team
   const [selectedTeam, setSelectedTeam] = useState("Design");
 
+  // Function to handle team click and toggle selection
   const handleTeamClick = (teamLabel) => {
     setSelectedTeam(selectedTeam === teamLabel ? null : teamLabel);
   };
 
   return (
     <div className="sidebar flex flex-col justify-between h-full overflow-y-auto">
+      {/* Top section with logo, organization name, and user profile picture */}
       <div>
         <div className="top border-2 font-semibold rounded-lg px-2 flex flex-row items-center justify-between bg-slate-200 h-14">
           <div className="flex flex-row items-center">
@@ -30,6 +33,8 @@ const SideBar = () => {
             />
           </div>
         </div>
+
+        {/* Team selection and creation */}
         <div className=" mt-2">
           {teamData.map((team, index) => (
             <div
@@ -47,6 +52,8 @@ const SideBar = () => {
               </div>
             </div>
           ))}
+
+          {/* Create a new team option */}
           <div
             className={`label font-semibold cursor-pointer flex items-center`}
           >
@@ -58,14 +65,20 @@ const SideBar = () => {
             </div>
           </div>
         </div>
+
+        {/* Folders section */}
         <div className={`label font-semibold cursor-pointer flex items-center`}>
           <div className=" flex flex-row justify-between w-full px-2 py-1 font-normal text-gray-500">
             <span>Folders</span>
             <span className=" font-normal">+</span>
           </div>
         </div>
+
+        {/* Tree component for displaying folder structure */}
         <Tree treeData={treeData} />
       </div>
+
+      {/* Other data section */}
       <div className=" mt-16">
         {otherData.map((data) => (
           <div
@@ -83,6 +96,8 @@ const SideBar = () => {
             </div>
           </div>
         ))}
+
+        {/* Trial information */}
         <div
           className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-200 rounded-lg`}
         >
@@ -92,7 +107,7 @@ const SideBar = () => {
               <span>days left on trial</span>
             </div>
             <span className=" py-1 px-2 bg-slate-800 text-white rounded-lg text-sm hover:bg-slate-600">
-              Add biling
+              Add billing
             </span>
           </div>
         </div>

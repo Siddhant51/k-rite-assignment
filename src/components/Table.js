@@ -9,23 +9,30 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { tableData } from "../assets/tabledata";
 
 const Table = () => {
+  // State for brand filter input
   const [filterBrand, setFilterBrand] = useState("");
+
+  // State for selected items count
   const [selectedCount, setSelectedCount] = useState(0);
 
+  // State for table data
   const [items, setItems] = useState(tableData);
 
+  // Filter items based on brand
   const filteredItems = items.filter((item) =>
     item.brand.toLowerCase().includes(filterBrand.toLowerCase())
   );
 
+  // State for selected items and all items selection
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
+  // Update selectAll state based on selectedItems
   useEffect(() => {
-    // Check if all items are selected
     setSelectAll(selectedItems.length === items.length);
   }, [selectedItems, items]);
 
+  // Handle checkbox change for individual items
   const handleCheckboxChange = (item) => {
     const selectedSet = new Set(selectedItems);
 
@@ -40,6 +47,7 @@ const Table = () => {
     setSelectedCount(newSelectedItems.length);
   };
 
+  // Handle select all checkbox change
   const handleSelectAllChange = () => {
     if (selectAll) {
       setSelectedItems([]);
@@ -53,6 +61,7 @@ const Table = () => {
     setSelectAll(!selectAll);
   };
 
+  // Function to render members with icons
   const handleMembers = (members) => {
     return (
       <div className="flex flex-row items-center">
@@ -61,13 +70,13 @@ const Table = () => {
             key={index}
             dangerouslySetInnerHTML={{ __html: member }}
             style={{ marginRight: index < members.length - 1 ? "-11px" : "0" }}
-            // className="w-7 h-7 rounded-full"
           ></div>
         ))}
       </div>
     );
   };
 
+  // Function to render categories with styling
   const handleCategories = (items) => {
     return (
       <div className=" space-x-1">
@@ -83,6 +92,7 @@ const Table = () => {
     );
   };
 
+  // Function to render next meeting with different colors based on content
   const handleNextMeeting = (item) => {
     return item.includes("in") ? (
       <span className="border-2 rounded-lg p-1 bg-green-200 text-sm">
@@ -104,6 +114,7 @@ const Table = () => {
   return (
     <div className=" flex flex-col h-full justify-between">
       <div>
+        {/* Table header with search and filter */}
         <div className=" border-2 font-semibold rounded-lg px-2 flex flex-row items-center justify-between bg-slate-100 h-14">
           <span className=" text-xl font-semibold px-2 py-2">Products</span>
           <label className=" border-2 rounded-xl flex items-center">
@@ -120,6 +131,7 @@ const Table = () => {
           </label>
         </div>
         <div className=" p-2">
+          {/* Table filter and sort options */}
           <div className=" flex flex-row justify-between">
             <div className=" h-10 flex space-x-2">
               <select className=" border-2 rounded-lg font-semibold hover:bg-slate-200 cursor-pointer">
@@ -145,6 +157,7 @@ const Table = () => {
               </div>
             </div>
             <div className=" flex flex-row space-x-2">
+              {/* Additional action buttons */}
               <div className=" flex flex-row items-center border-2 rounded-lg p-1 font-semibold hover:bg-slate-200 cursor-pointer">
                 <span className="icon pr-1">
                   <MdOutlineAddCircleOutline />
@@ -159,9 +172,11 @@ const Table = () => {
               </div>
             </div>
           </div>
+          {/* Table content */}
           <table className=" w-full text-gray-500 border-2 border-collapse mt-2">
             <thead>
               <tr>
+                {/* Table header columns */}
                 <td className="pl-2 border-x-2 py-2">
                   <input
                     type="checkbox"
@@ -182,6 +197,7 @@ const Table = () => {
             <tbody>
               {filteredItems.map((item) => (
                 <tr className=" font-semibold border-2" key={item.brand}>
+                  {/* Table row content */}
                   <td className=" pl-2 border-x-2">
                     <input
                       type="checkbox"
@@ -212,6 +228,7 @@ const Table = () => {
                   <td className="pl-2 border-x-2"></td>
                 </tr>
               ))}
+              {/* Additional row for summary or actions */}
               <tr>
                 <td className="pl-2 border-x-2"></td>
                 <td className="pr-2 border-x-2 text-right">10 count</td>
@@ -234,6 +251,7 @@ const Table = () => {
           </table>
         </div>
       </div>
+      {/* Selection and action controls */}
       <div className=" w-full flex justify-center">
         <div className="flex flex-row font-semibold">
           <div className=" flex flex-row border-2 rounded-lg py-1 px-2 hover:bg-slate-200 cursor-pointer">

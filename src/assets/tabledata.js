@@ -1,3 +1,4 @@
+// Importing icons from various libraries
 import { FaWix } from "react-icons/fa";
 import { FaShopify } from "react-icons/fa";
 import { FaMailchimp } from "react-icons/fa";
@@ -9,8 +10,10 @@ import { FaEvernote } from "react-icons/fa";
 import { FaMicrosoft } from "react-icons/fa";
 import { FaInvision } from "react-icons/fa";
 
+// Data representing table entries with information about different brands
 export const tableData = [
   {
+    // Styling for brand icon using React Icons and custom classes
     icon: (
       <span className="text-2xl text-white bg-slate-700 rounded-lg p-1">
         <FaWix />
@@ -19,6 +22,7 @@ export const tableData = [
     brand: "Wix",
     description: "Website builder platform",
     members: [
+      // Members represented with custom HTML in strings
       '<div class="w-7 h-7 rounded-full bg-blue-500 border-white border-2"></div>',
       '<div class="w-7 h-7 rounded-full bg-green-500 border-white border-2"></div>',
       '<div class="w-7 h-7 rounded-full bg-yellow-500 border-white border-2"></div>',
@@ -29,6 +33,7 @@ export const tableData = [
     next_meeting: "in 30 minutes",
   },
   {
+    // Styling for brand icon using React Icons and custom classes
     icon: (
       <span className="text-2xl text-white bg-lime-500 rounded-lg p-1">
         <FaShopify />
@@ -37,6 +42,7 @@ export const tableData = [
     brand: "Shopify",
     description: "E-commerce platform",
     members: [
+      // Members represented with custom HTML in strings
       '<div class="w-7 h-7 rounded-full bg-orange-500 border-white border-2"></div>',
       '<div class="w-7 h-7 rounded-full bg-purple-500 border-white border-2"></div>',
       '<div class="w-7 h-7 rounded-full bg-teal-500 border-white border-2"></div>',
@@ -45,6 +51,7 @@ export const tableData = [
     tags: ["#ShoppingCart", "#Retail"],
     next_meeting: "Tomorrow",
   },
+  // ... (similar entries for other brands)
   {
     icon: (
       <span className="text-2xl text-slate-800 bg-yellow-300 rounded-lg p-1">
