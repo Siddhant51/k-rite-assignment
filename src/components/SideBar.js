@@ -1,79 +1,9 @@
 import React, { useState } from "react";
 import Tree from "./Tree";
 import { BiAtom } from "react-icons/bi";
-import { LuFolder } from "react-icons/lu";
-import { FaCode } from "react-icons/fa6";
-import { TbSpeakerphone } from "react-icons/tb";
-import { AiOutlineAntDesign } from "react-icons/ai";
-import { CgUserAdd } from "react-icons/cg";
-import { IoMdHelpCircleOutline } from "react-icons/io";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import pic from "../assets/test.jpg";
-
-const teamData = [
-  { icon: <AiOutlineAntDesign />, label: "Design" },
-  { icon: <TbSpeakerphone />, label: "Marketing" },
-  { icon: <FaCode />, label: "Development" },
-];
-
-const treeData = [
-  {
-    icon: <LuFolder />,
-    label: "Products",
-    children: [
-      {
-        label: "Roadmap",
-      },
-      {
-        label: "Feedback",
-      },
-      {
-        label: "Performance",
-      },
-      {
-        label: "Team",
-      },
-      {
-        label: "Analytics",
-      },
-      {
-        icon: <MdOutlineAddCircleOutline />,
-        label: "Add new sub",
-      },
-    ],
-  },
-  {
-    icon: <LuFolder />,
-    label: "Sales",
-    children: [
-      { label: "Client Management" },
-      { label: "Lead Generation" },
-      { label: "Sales Analytics" },
-    ],
-  },
-  {
-    icon: <LuFolder />,
-    label: "Design",
-    children: [
-      { label: "UI/UX Design" },
-      { label: "Graphic Design" },
-      { label: "Prototyping" },
-    ],
-  },
-  {
-    icon: <LuFolder />,
-    label: "Office",
-  },
-  {
-    icon: <LuFolder />,
-    label: "Legal",
-  },
-];
-
-const otherData = [
-  { icon: <CgUserAdd />, label: "Invite Teammates" },
-  { icon: <IoMdHelpCircleOutline />, label: "Help and first steps" },
-];
+import { otherData, teamData, treeData } from "../assets/sideBarData";
 
 const SideBar = () => {
   const [selectedTeam, setSelectedTeam] = useState("Design");
@@ -83,9 +13,9 @@ const SideBar = () => {
   };
 
   return (
-    <div className="sidebar flex flex-col justify-between h-full">
+    <div className="sidebar flex flex-col justify-between h-full overflow-y-auto">
       <div>
-        <div className="top border-2 font-semibold rounded-lg px-2 flex flex-row items-center justify-between bg-slate-100">
+        <div className="top border-2 font-semibold rounded-lg px-2 flex flex-row items-center justify-between bg-slate-200 h-14">
           <div className="flex flex-row items-center">
             <span className="icon text-white bg-black text-xl">
               <BiAtom />
@@ -100,13 +30,13 @@ const SideBar = () => {
             />
           </div>
         </div>
-        <div>
+        <div className=" mt-2">
           {teamData.map((team, index) => (
             <div
               key={team.label}
-              className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-100 rounded-lg ${
+              className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-200 rounded-lg my-1 ${
                 selectedTeam === team.label
-                  ? "selected border-2 rounded-lg bg-slate-100"
+                  ? "selected border-2 rounded-lg bg-slate-200"
                   : ""
               }`}
               onClick={() => handleTeamClick(team.label)}
@@ -136,13 +66,13 @@ const SideBar = () => {
         </div>
         <Tree treeData={treeData} />
       </div>
-      <div>
+      <div className=" mt-16">
         {otherData.map((data) => (
           <div
             key={data.label}
-            className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-100 rounded-lg ${
+            className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-200 rounded-lg my-1 ${
               selectedTeam === data.label
-                ? "selected border-2 rounded-lg bg-slate-100"
+                ? "selected border-2 rounded-lg bg-slate-200"
                 : ""
             }`}
             onClick={() => handleTeamClick(data.label)}
@@ -153,6 +83,19 @@ const SideBar = () => {
             </div>
           </div>
         ))}
+        <div
+          className={`label font-semibold cursor-pointer flex items-center hover:bg-slate-200 rounded-lg`}
+        >
+          <div className=" flex flex-row justify-between w-full px- py-1 items-center">
+            <div>
+              <span className="icon pl-2">7 </span>
+              <span>days left on trial</span>
+            </div>
+            <span className=" py-1 px-2 bg-slate-800 text-white rounded-lg text-sm hover:bg-slate-600">
+              Add biling
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

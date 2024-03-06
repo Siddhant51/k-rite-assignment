@@ -25,8 +25,8 @@ function TreeNode({ node, defaultOpen }) {
         </div>
       ) : (
         <div
-          className={`label font-semibold cursor-pointer flex flex-row items-center hover:bg-slate-100 rounded-lg ${
-            isLabelClicked ? "selected border-2 rounded-lg bg-slate-100" : ""
+          className={`label font-semibold cursor-pointer flex flex-row items-center hover:bg-slate-200 rounded-lg my-1 ${
+            isLabelClicked ? "selected border-2 rounded-lg bg-slate-200" : ""
           }`}
           onClick={handleClick}
         >
